@@ -15,6 +15,7 @@ def pencil_sketch(image_path, blur_kernel=21):
     #reading the image
     image = cv2.imread(image_path)
     if image is None:
+        print("Invalid image path")
         return (None,None)
 
     #converting to grayscale and inverting
@@ -45,6 +46,7 @@ def colour_sketch(image_path, blur_kernel=21):
     #reading the image
     image = cv2.imread(image_path)
     if image is None:
+        print("Invalid image path")
         return (None,None)
 
     #converting to hsv and inverting value
@@ -131,30 +133,82 @@ def display_result_colour (original, sketch, save_path=None):
     plt.show()
 
 
+def video_to_sketch(input_path, output_path, blur_kernel=21):
+    '''
+    Breaks video down into frames, converts each frame into a pencil sketch and remakes the video
+    Parameters:
+      input_path: original video path
+      output_path: generated video path
+      blur_kernel: size of kernel for gaussian blur
+    '''
+    cap = cv2.VideoCapture(input_path)
+    if not cap.isOpened():
+        print(f"Could not open video")
+        return
+    
+    if output_path is None:
+        print(f"Invalid output path")
+        return
+
+    width  = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    fps    = cap.get(cv2.CAP_PROP_FPS)
+    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    out = cv2.VideoWriter(output_path, fourcc, fps, (width, height), isColor=False)
+    
+    print("Processing\n")
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+    
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        inverted = 255 - gray
+        blurred = cv2.GaussianBlur(inverted, (blur_kernel, blur_kernel), 0)
+        sketch = cv2.divide(gray, 255 - blurred, scale=256)
+        
+        out.write(sketch)
+        print("▇", end="")
+
+    out.release()
+    cap.release()
+    print(f"\nSaved sketch to: {output_path}")
+
+
 def main():
-    print("1. Pencil Sketch \n2. Colour Pencil Sketch")
+    print("1. Pencil Sketch \n2. Colour Pencil Sketch \n3. Video Sketch")
     type = int(input("Choose function: "))
 
-    image_path = input("Enter path of original image: ")
     blur_kernel = int(input("Enter kernel (odd number): "))
     if blur_kernel%2==0:
         print("Enter an odd number")
 
     else:
-        save_path = input("Enter path to save output sketch: ")
 
         if type == 1:
+            image_path = input("Enter path of original image: ")
+            save_path = input("Enter path to save output sketch: ")
             image, sketch = pencil_sketch(image_path, blur_kernel)
             if image is not None and sketch is not None:
                 display_result(image, sketch, save_path)
             else:
                 print("Enter a valid image path")
+
         elif type == 2:
+            image_path = input("Enter path of original image: ")
+            save_path = input("Enter path to save output sketch: ")
             image, sketch = colour_sketch(image_path, blur_kernel)
             if image is not None and sketch is not None:
                 display_result_colour(image, sketch, save_path)
             else:
                 print("Enter a valid image path")
+
+        elif type == 3:
+            input_path = input("Enter path to video: ")
+            output_path = input("Enter path to save video sketch: ")
+            video_to_sketch(input_path, output_path, blur_kernel)
         else:
             print("Enter a valid choice")
 
