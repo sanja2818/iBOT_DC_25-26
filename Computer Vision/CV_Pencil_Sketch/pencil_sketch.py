@@ -3,6 +3,15 @@ import cv2
 import matplotlib.pyplot as plt
 
 def pencil_sketch(image_path, blur_kernel=21):
+    '''
+    Converts a colour image into a grayscale pencil sketch effect image
+    Parameters:
+      image_path (str): file path to colour image
+      blur kernel (int): size of kernel for gaussian blur
+    Returns:
+      tuple containing original BGR image and generated grayscale sketch
+    '''
+
     #reading the image
     image = cv2.imread(image_path)
     if image is None:
@@ -21,8 +30,18 @@ def pencil_sketch(image_path, blur_kernel=21):
     sketch = np.clip(sketch, 0, 255).astype(np.uint8)
 
     return (image, sketch)
-    
+
+
 def colour_sketch(image_path, blur_kernel=21):
+    '''
+    Converts a colour image into a colour pencil sketch effect image
+    Parameters:
+      image_path (str): file path to colour image
+      blur kernel (int): size of kernel for gaussian blur
+    Returns:
+      tuple containing original BGR image and generated colour sketch (BGR)
+    '''
+
     #reading the image
     image = cv2.imread(image_path)
     if image is None:
@@ -48,7 +67,16 @@ def colour_sketch(image_path, blur_kernel=21):
 
     return (image, final_sketch)
 
+
 def display_result (original, sketch, save_path=None):
+    '''
+    Displays original image and processed image side by side, and saves the new image
+    Parameters:
+      original: original image
+      sketch: generated image (greyscale)
+      save_path: path to save sketch
+    '''
+
     #converting to rgv for matplotlib
     original_RGB = cv2.cvtColor(original, cv2.COLOR_BGR2RGB)
 
@@ -70,7 +98,16 @@ def display_result (original, sketch, save_path=None):
 
     plt.show()
 
+
 def display_result_colour (original, sketch, save_path=None):
+    '''
+    Displays original image and processed image side by side, and saves the new image
+    Parameters:
+      original: original image
+      sketch: generated image (BGR)
+      save_path: path to save sketch
+    '''
+
     #converting to rgv for matplotlib
     original_RGB = cv2.cvtColor(original, cv2.COLOR_BGR2RGB)
     sketch_RGB = cv2.cvtColor(sketch, cv2.COLOR_BGR2RGB)
@@ -121,7 +158,6 @@ def main():
         else:
             print("Enter a valid choice")
 
+
 if __name__ == '__main__':
     main()
-
-
