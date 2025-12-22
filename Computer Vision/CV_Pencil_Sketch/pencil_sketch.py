@@ -17,6 +17,11 @@ def pencil_sketch(image_path, blur_kernel=21):
     if image is None:
         print("Invalid image path")
         return (None,None)
+    if not os.path.exists(image_path):
+        print(f"Image file not found: {image_path}")
+    
+    if not os.path.isfile(image_path):
+        print(f"Path is not a file: {image_path}")
 
     #converting to grayscale and inverting
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
