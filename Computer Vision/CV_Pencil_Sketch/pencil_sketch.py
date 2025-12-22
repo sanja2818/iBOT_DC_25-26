@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
+import os
 
 def pencil_sketch(image_path, blur_kernel=21):
     '''
@@ -19,9 +20,11 @@ def pencil_sketch(image_path, blur_kernel=21):
         return (None,None)
     if not os.path.exists(image_path):
         print(f"Image file not found: {image_path}")
+        return (None, None)
     
     if not os.path.isfile(image_path):
         print(f"Path is not a file: {image_path}")
+        return (None, None)
 
     #converting to grayscale and inverting
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
