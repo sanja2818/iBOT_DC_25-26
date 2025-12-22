@@ -13,11 +13,6 @@ def pencil_sketch(image_path, blur_kernel=21):
       tuple containing original BGR image and generated grayscale sketch
     '''
 
-    #reading the image
-    image = cv2.imread(image_path)
-    if image is None:
-        print("Invalid image path")
-        return (None,None)
     if not os.path.exists(image_path):
         print(f"Image file not found: {image_path}")
         return (None, None)
@@ -25,6 +20,12 @@ def pencil_sketch(image_path, blur_kernel=21):
     if not os.path.isfile(image_path):
         print(f"Path is not a file: {image_path}")
         return (None, None)
+
+    #reading the image
+    image = cv2.imread(image_path)
+    if image is None:
+        print("Invalid image path")
+        return (None,None)
 
     #converting to grayscale and inverting
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
