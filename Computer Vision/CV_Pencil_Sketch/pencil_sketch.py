@@ -29,7 +29,7 @@ def pencil_sketch(image_path, blur_kernel=21):
     #dividing and scaling
     sketch = cv2.divide(gray, invblurred, scale=256)
     sketch = np.clip(sketch, 0, 255).astype(np.uint8)
-
+    
     return (image, sketch)
 
 
@@ -43,27 +43,14 @@ def colour_sketch(image_path, blur_kernel=21):
       tuple containing original BGR image and generated colour sketch (BGR)
     '''
 
-    #reading the image
-    image = cv2.imread(image_path)
-    if image is None:
-        print("Invalid image path")
-        return (None,None)
+    image, gray = pencil_sketch(image_path, blur_kernel)
 
-    #converting to hsv and inverting value
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     h, s, v = cv2.split(hsv)
-    v_inv = 255 - v
 
-    #blurring the value and inverting
-    v_blur = cv2.GaussianBlur(v_inv, (blur_kernel, blur_kernel), 0)
-    v_invblur = 255 - v_blur
-
-    #dividing and scaling
-    v_sketch = cv2.divide(v, v_invblur, scale=256)
-    v_sketch = np.clip(v_sketch, 0, 255).astype(np.uint8)
     s = (s*0.7).astype(np.uint8)
 
-    sketch = cv2.merge([h, s, v_sketch])
+    sketch = cv2.merge([h, s, gray])
 
     final_sketch = cv2.cvtColor(sketch, cv2.COLOR_HSV2BGR)
 
