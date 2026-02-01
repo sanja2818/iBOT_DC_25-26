@@ -118,6 +118,16 @@ project-root/
 └── Day3/
     ├── best_model.pth
     ├── confusion_matrix.png
+    ├── data/
+    │   ├── test/
+    │   │   ├── cats/
+    │   │   └── dogs/
+    │   ├── train/
+    │   │   ├── cats/
+    │   │   └── dogs/
+    │   └── val/
+    │       ├── cats/
+    │       └── dogs/
     ├── evaluate.py
     ├── prediction_visualisation.png
     ├── README.md
