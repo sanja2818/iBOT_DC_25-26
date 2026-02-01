@@ -1,0 +1,33 @@
+.\results\result1.jpg
+No of circles: 6
+Average radius: 59.17
+Coordinates: (640,164) 	 Radius: 118
+Coordinates: (192,128) 	 Radius: 68
+Coordinates: (878,502) 	 Radius: 48
+Coordinates: (964,84) 	 Radius: 30
+Coordinates: (528,348) 	 Radius: 56
+Coordinates: (346,254) 	 Radius: 35
+
+.\results\result2.jpg
+No of circles: 10
+Average radius: 85.40
+Coordinates: (626,360) 	 Radius: 100
+Coordinates: (462,114) 	 Radius: 92
+Coordinates: (642,112) 	 Radius: 84
+Coordinates: (124,622) 	 Radius: 86
+Coordinates: (372,360) 	 Radius: 62
+Coordinates: (632,622) 	 Radius: 93
+Coordinates: (126,360) 	 Radius: 95
+Coordinates: (282,112) 	 Radius: 77
+Coordinates: (112,114) 	 Radius: 75
+Coordinates: (374,616) 	 Radius: 90
+
+.\results\result3.jpg
+No of circles: 5
+Average radius: 100.60
+Coordinates: (474,242) 	 Radius: 89
+Coordinates: (708,242) 	 Radius: 109
+Coordinates: (592,344) 	 Radius: 108
+Coordinates: (240,244) 	 Radius: 89
+Coordinates: (356,342) 	 Radius: 108
+

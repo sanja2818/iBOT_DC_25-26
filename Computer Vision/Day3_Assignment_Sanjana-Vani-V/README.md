@@ -1,6 +1,10 @@
 Name:
 Sanjana Vani V
 
+Running the program:
+- Run train.py to obtain best_model.pth (saved weights after training) and Training and Validation curves
+- Run evaluate.py to display information from testing
+
 Final Test Accuracy:
 Test Accuracy: 97.80%
 
@@ -32,3 +36,11 @@ Bonus 3 - Visualizing Predictions
     - 5 correct dog predictions
     - 5 cats predicted as dogs
     - 5 dogs predicted as cats
+
+Dependancies:
+- python3
+- pytorch with cuda
+- numpy
+- matplotlib
+- seaborn
+- sklearn
