@@ -7,58 +7,7 @@ A collection of three computer vision projects progressing from classical image 
 ## 📁 Folder Structure
 
 ```
-computer-vision-bootcamp/
-│
-├── README.md
-│
-├── Day1_Pencil_Sketch/
-│   ├── Day1_Tasks
-│   │   ├──CV_Image_Processing
-│   ├── Day1_Assignment
-│   │   ├── pencil_sketch.py
-│   │   ├── test_images/
-│   │   │   ├── test1.jpg
-│   │   │   ├── test2.jpg
-│   │   │   └── test3.jpg
-│   │   ├── output_sketches/
-│   │   │   ├── sketch1.jpg
-│   │   │   ├── sketch2.jpg
-│   │   │   └── sketch3.jpg
-│   │   └── README.txt
-│
-├── Day2_Circle_Detector/
-│   ├── circle_detector.py
-│   ├── test_images/
-│   │   ├── test1.jpg
-│   │   ├── test2.jpg
-│   │   └── test3.jpg
-│   ├── results/
-│   │   ├── result1.jpg
-│   │   ├── result2.jpg
-│   │   ├── result3.jpg
-│   │   └── statistics.txt
-│   └── README.txt
-│
-└── Day3_Cat_Dog_Classifier/
-    ├── train.py
-    ├── evaluate.py
-    ├── data/
-    │   ├── train/
-    │   │   ├── cats/
-    │   │   └── dogs/
-    │   ├── val/
-    │   │   ├── cats/
-    │   │   └── dogs/
-    │   └── test/
-    │       ├── cats/
-    │       └── dogs/
-    ├── best_model.pth
-    ├── training_curves.png
-    ├── confusion_matrix.png
-    └── README.txt
-
 Computer Vision
-project-root/
 │
 ├── README.md
 │
