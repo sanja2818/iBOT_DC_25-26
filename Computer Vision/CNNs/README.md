@@ -25,3 +25,10 @@ Any Challenges Faced:
   I had to run the code on kaggle instead after debugging
 - I had some difficulty selecting a good learning rate
 
+Bonus Assignments:
+Bonus 3 - Visualizing Predictions
+- Created a grid of 
+    - 5 correct cat predictions
+    - 5 correct dog predictions
+    - 5 cats predicted as dogs
+    - 5 dogs predicted as cats
