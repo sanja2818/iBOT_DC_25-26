@@ -1,10 +1,17 @@
+/*
+Author: Sanjana Vani V
+Date: 07-02-2026
+Board: Arduino Uno R3
+Description: Visualises Audio Input using a 128x64 OLED
+*/
+
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
 const int Width = 128;
 const int Height = 64;
-const int sound_sensor = A0;
+const int sound_sensor = A1;
 int reading;
 int y = 0;
 int y_prev = 0;
@@ -27,25 +34,38 @@ void loop() {
   Display.clearDisplay();
   reading = analogRead(sound_sensor);
   Serial.println(reading);
-  y = map(reading, 0, 1023, 0, 64);
+  y = map(reading, 500, 550, 0, 64);
   if (y>y_prev)
   {
     for (int i=y_prev; i<=y; i++)
     {
-      Display.drawRect(64, 0, 8, i, SSD1306_WHITE);
-      Display.fillRect(64, 0, 8, i, SSD1306_WHITE);
-      delay(100);
+      Display.drawRect(60, 64-i, 8, i, SSD1306_WHITE);
+      Display.fillRect(60, 64-i, 8, i, SSD1306_WHITE);
+      delay(20);
     }
   }
   if (y<y_prev)
   {
     for (int i=y_prev; i>=y; i--)
     {
-      Display.drawRect(64, 0, 8, i, SSD1306_WHITE);
-      Display.fillRect(64, 0, 8, i, SSD1306_WHITE);
-      delay(100);
+      Display.drawRect(64, 64-i, 8, i, SSD1306_WHITE);
+      Display.fillRect(64, 64-i, 8, i, SSD1306_WHITE);
+      delay(20);
     }
   }
   y=y_prev;
   Display.display();
 }
+
+/*
+OLED Connections:
+GND - Ground
+VCC - 3.3V
+SCL - Analog Pin A5
+SDA - Analog Pin A4
+
+Sound Sensor Connections:
+VCC - 5V 
+GND - Ground
+A0 - Digital Pin A1
+*/

@@ -1,3 +1,10 @@
+/*
+Author: Sanjana Vani V
+Date: 07-02-2026
+Board: Arduino Uno R3
+Description: OLED Grid Walker using button inputs
+*/
+
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
@@ -73,3 +80,18 @@ void loop() {
   Display.display();
   delay(700);
 }
+
+/*
+OLED Connections:
+GND - Ground
+VCC - 3.3V
+SCL - Analog Pin A5
+SDA - Analog Pin A4
+
+Push Button Connections:
+Terminal 1 - All Grounded
+Terminal 2 - LEFT - 2
+             RIGHT - 3
+             UP - 4
+             DOWN - 5
+*/
