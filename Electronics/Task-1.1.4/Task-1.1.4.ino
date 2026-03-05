@@ -5,8 +5,7 @@ Board: Arduino Uno R3
 Description: Calculates distance using Ultrasonic Sensor Module
 */
 
-
-const int trig = 11;
+const int trig = 10;
 const int echo = 12;
 const float v_sound = 0.0343; //speed of sound in cm/microsecond
 float time,distance;
